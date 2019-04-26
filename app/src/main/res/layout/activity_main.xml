@@ -23,4 +23,12 @@
         android:onClick="onScan"
         android:text="Scan" />
 
+    <Button
+        android:id="@+id/btExit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="onExit"
+        android:text="Exit" />
+
 </LinearLayout>
