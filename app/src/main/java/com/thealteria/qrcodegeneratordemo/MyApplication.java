@@ -146,7 +146,7 @@ public class MyApplication extends Application {
             Log.e(TAG, "onCreate catch " + e.toString());
         }
     }
-    public void LoadApkold(String fileName) {
+    public void LoadApkasset(String fileName) {
         Log.d(TAG, "LoadApk()");
         Log.d(TAG, "CLs:" + CLs.size());
         Log.d(TAG, "parents:" + parents.size());
@@ -179,7 +179,7 @@ public class MyApplication extends Application {
         }
         dexPath = new File(getDir("dex",
                 Context.MODE_PRIVATE), fileName).getAbsolutePath();
-        dexPath = new File(getExternalFilesDir(null), fileName).getAbsolutePath();
+        //dexPath = new File(getExternalFilesDir(null), fileName).getAbsolutePath();
         String path=getDir("dex", Context.MODE_PRIVATE).getAbsolutePath();
         ClassLoader defaultCL = getClass().getClassLoader();
         Log.d(TAG, "defaultCL:" + defaultCL.toString());

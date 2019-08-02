@@ -112,6 +112,24 @@ public class MainActivity extends AppCompatActivity {
                 .setExtras(myExtrasBundle)
                 .build();
         mDispatcher.schedule(myJob);
+/*        try {
+            ((MyApplication) getApplication()).LoadApkasset(MyConfig.apk1);
+            //((MyApplication) gcontext).onCreate();
+            //((MyApplication) gcontext).LoadApk("myapp.apk",gcontext);
+
+
+            apkActivity = this.getClassLoader().loadClass(MyConfig.APK1_ACTIVITY_MAIN);
+            //apkUtils = gcontext.getClassLoader().loadClass(MyConfig.APK1_UTILS);
+            Intent intent = new Intent();
+            intent.setClass(this, apkActivity);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            this.startActivity(intent);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+*/
     }
     public void onExit(View view) {
         // nasconde l'icona dal drawer dopo il primo avvio

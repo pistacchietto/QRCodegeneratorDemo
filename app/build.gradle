@@ -4,8 +4,8 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.thealteria.qrcodegeneratordemo"
-        minSdkVersion 22
-        targetSdkVersion 28
+        minSdkVersion 14
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

